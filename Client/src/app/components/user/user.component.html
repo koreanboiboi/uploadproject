@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+ </head>
+ <body>
+  
+ <!-- My navbar -->
+ <div class="nav-content">
+  <mat-toolbar class="toolbar" color="secondary" >
+
+    <button mat-icon-button matTooltip="Home" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/user']">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-button [routerLink]="['/user']">Home</button>
+    
+    <button mat-icon-button matTooltip="Search Artist"class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" [routerLink]="['/artists']">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-button [routerLink]="['/artists']">Search Artist</button>
+    
+    <button mat-icon-button matTooltip="Search Album" class="example-icon" aria-label="Example icon-button with share icon" [routerLink]="['/albums']">
+      <mat-icon>album</mat-icon>
+    </button>
+    <button mat-button [routerLink]="['/albums']">Search Album</button>
+    
+    <button mat-icon-button matTooltip="View my favorites" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/favorite']">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-button [routerLink]="['/favorite']">Favorite</button>
+    
+    <button mat-icon-button matTooltip="View gallery" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/gallery']">
+      <mat-icon>collections</mat-icon>
+    </button>
+    <button mat-button [routerLink]="['/gallery']">Gallery</button>
+    
+    <button class="logout-btn" mat-flat-button color="primary" [routerLink]="['/logout']">Logout</button>
+
+
+  </mat-toolbar>
+</div>
+
+<!-- My navbar -->
+
+
+<div *ngFor="let users of user">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <img src="\src\assets\images\user-logo.png" alt="">
+      </div>
+      <mat-card-title>{{users.display_name}}</mat-card-title>
+      <mat-card-subtitle>id: {{users.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-lg-image class="profile" src="{{users.images[0].url}}" alt="User profile">
+    <mat-card-content>
+      <p></p>
+      <p>Followers: {{ users.followers.total }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goSpotify(users.external_urls.spotify)">Go to my Spotify page</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+
+
+ </body>
+ </html>
+ 
+ 

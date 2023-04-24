@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  
+
+
+      <div class="example-ripple-container mat-elevation-z10" 
+      matRipple
+      [matRippleCentered]="centered"
+      [matRippleDisabled]="disabled"
+      [matRippleUnbounded]="unbounded"
+      [matRippleRadius]="radius"
+      [matRippleColor]="color"
+      (click)="displayDetail()"
+      (click)="shows()"
+      >
+          <div *ngIf="show">
+            <H3>Login Details</H3>
+          </div>
+          <div *ngIf="display">
+            <h3>ID: vttpfred1234@gmail.com PW: Password123</h3>
+          </div>
+      </div>
+
+          <div class="example-button-row">
+            <button class="button" mat-raised-button color="primary" (click)="login()" >Login with spotify</button>
+          </div>
+  
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* start navbar css */
+section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  .logout-btn{
+    position: absolute;
+    right: 0;
+  }
+
+  /* navbar css end */
+
+
+  .example-card {
+    position: static;
+    max-width: 400px;
+    /* size: auto; */
+    margin-left: 5vw;
+    margin-top: 10vh;
+    background-color: #CFD8DC
+
+  }
+  
+  .example-header-image {
+    background-image: url('\src\assets\images\user-logo.png');
+    background-size: cover;
+
+  }
+
+  .profile{
+    margin-left: 8px;
+  }
+
+  /* .toolbar {
+    position: fixed;
+    margin-top: 9vh;
+  } */

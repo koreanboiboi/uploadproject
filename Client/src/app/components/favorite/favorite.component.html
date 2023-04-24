@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite</title>
+ </head>
+ <body>
+
+    <!-- My navbar -->
+  <div class="nav-content">
+    <mat-toolbar class="toolbar" color="secondary" >
+
+      <button mat-icon-button matTooltip="Home" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/user']">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/user']">Home</button>
+      
+      <button mat-icon-button matTooltip="Search Artist"class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" [routerLink]="['/artists']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/artists']">Search Artist</button>
+      
+      <button mat-icon-button matTooltip="Search Album" class="example-icon" aria-label="Example icon-button with share icon" [routerLink]="['/albums']">
+        <mat-icon>album</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/albums']">Search Album</button>
+      
+      <button mat-icon-button matTooltip="View my favorites" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/favorite']">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/favorite']">Favorite</button>
+      
+      <button mat-icon-button matTooltip="View gallery" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/gallery']">
+        <mat-icon>collections</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/gallery']">Gallery</button>
+      
+      <button class="logout-btn" mat-flat-button color="primary" [routerLink]="['/logout']">Logout</button>
+  
+  
+    </mat-toolbar>
+  </div>
+  
+<!-- My navbar -->
+
+
+<div class="chips">
+    <mat-chip-listbox aria-label="selection">
+        <mat-chip-option (click)="getArtist()">Artist</mat-chip-option>
+        <mat-chip-option (click)="getAlbum()">Album</mat-chip-option>
+    </mat-chip-listbox>
+</div>
+
+<div *ngIf="showAlbum">
+<div *ngFor="let alb of album">
+    <mat-card class="example-card">
+      <mat-card-header>
+          <mat-card-title>
+            <h1>{{alb.albumName}}</h1>  
+          </mat-card-title>
+          <mat-card-subtitle><strong> id:{{alb.id}}</strong></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{alb.image}}" >
+      <mat-card-content>
+        <h3>Release date: {{alb.date}}</h3>
+        <h3>Link: {{alb.directLink}}</h3>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="button" mat-raised-button color="primary" (click)="shareAlbum(alb)">Share</button>
+        &nbsp;
+        <button type="button" mat-raised-button color="warn" (click)="deleteAlbum(alb.id)">Delete</button>
+
+      </mat-card-actions>
+    </mat-card>   
+      </div>
+</div>
+<div *ngIf="showArtist">
+    <div *ngFor="let art of artist">
+        <mat-card class="example-card">
+          <mat-card-header>
+              <mat-card-title>
+                <h1>{{art.name}}</h1>  
+              </mat-card-title>
+              <mat-card-subtitle><strong> id:{{art.id}}</strong></mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{art.image}}" >
+          <mat-card-content>
+            <h3>Popularity: {{art.popularity}}</h3>
+            <h3>Link: {{art.directLink}}</h3>
+          </mat-card-content>
+          <mat-card-actions>
+            <button type="button" mat-raised-button color="primary" (click)="shareArtist(art)">Share</button>
+            &nbsp;
+            <button type="button" mat-raised-button color="warn" (click)="deleteArtist(art.id)">Delete</button>
+    
+          </mat-card-actions>
+        </mat-card>   
+          </div>
+    </div>
+
+
+ </body>
+ </html>
+ 
+ 
+

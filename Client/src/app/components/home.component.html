@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+</head>
+<body color="primary">
+  <!-- My navbar -->
+  
+  <mat-toolbar class="toolbar" color="secondary" >
+
+    <!-- <button mat-icon-button matTooltip="Home" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/user']"> -->
+      <mat-icon>home</mat-icon>
+    <!-- </button> -->
+    <button mat-button disabled [routerLink]="['/user']">Home</button>
+    
+    <!-- <button mat-icon-button matTooltip="Search Artist"class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" [routerLink]="['/artists']"> -->
+      <mat-icon>person</mat-icon>
+    <!-- </button> -->
+    <button mat-button disabled [routerLink]="['/artists']">Search Artist</button>
+    
+    <!-- <button mat-icon-button matTooltip="Search Album" class="example-icon" aria-label="Example icon-button with share icon" [routerLink]="['/albums']"> -->
+      <mat-icon>album</mat-icon>
+    <!-- </button> -->
+    <button mat-button disabled [routerLink]="['/albums']">Search Album</button>
+    
+    <!-- <button mat-icon-button matTooltip="View my favorites" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/favorite']"> -->
+      <mat-icon>favorite</mat-icon>
+    <!-- </button> -->
+    <button mat-button disabled [routerLink]="['/favorite']">Favorite</button>
+    
+    <!-- <button mat-icon-button matTooltip="View gallery" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/gallery']"> -->
+      <mat-icon>collections</mat-icon>
+    <!-- </button> -->
+    <button mat-button disabled [routerLink]="['/gallery']">Gallery</button>
+    
+    <button class="logout-btn" mat-flat-button disabled [routerLink]="['/']">Logout</button>
+
+
+  </mat-toolbar>
+<!-- My navbar -->
+  <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+
+<div class="welcome-msg">
+  <h1>Welcome to your one stop music app where you can <br> search for your favorite artists/albums <br> and share with your friends</h1>
+  
+</div>
+
+</body>
+</html>
+
+
+
+
+

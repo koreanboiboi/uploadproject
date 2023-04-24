@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTTP FINAL PROJECT</title>
+</head>
+<body>
+      <mat-toolbar class="tool-bar" color="primary">
+        <mat-toolbar-row>
+        <div class="animate">
+          <h1 class="content">VTTP FINAL PROJECT </h1>
+        </div>
+          <!-- <span>VTTP FINAL PROJECT</span> -->
+          <span class="example-spacer"></span>
+          <mat-icon class="example-icon" aria-hidden="false" aria-label="music-icon">library_music</mat-icon>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+
+
+    <router-outlet></router-outlet>
+
+    <mat-toolbar color="primary" class="btm-toolbar">
+        
+      <mat-toolbar-row>
+      <div class="animate2">
+        <h1 class="content">FOR DONATIONS</h1>
+      </div>
+        
+        <!-- <span>VTTP FINAL PROJECT</span> -->
+        <span class="example-spacer"></span>
+        <button mat-icon-button matTooltip="give me money" class="money-icon" aria-label="attach_money" target="_blank" (click)="paypalMe()">
+          <mat-icon>attach_money</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="gift me money" class="money-icon" aria-label="money" target="_blank" (click)="paypalMe()">
+          <mat-icon>money</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+</body>
+</html>
+

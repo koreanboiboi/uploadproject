@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist</title>
+</head>
+<body>
+  <!-- My navbar -->
+  <div class="nav-content">
+    <mat-toolbar class="toolbar" color="secondary" >
+
+      <button mat-icon-button matTooltip="Home" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/user']">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/user']">Home</button>
+      
+      <button mat-icon-button matTooltip="Search Artist"class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" [routerLink]="['/artists']">
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/artists']">Search Artist</button>
+      
+      <button mat-icon-button matTooltip="Search Album" class="example-icon" aria-label="Example icon-button with share icon" [routerLink]="['/albums']">
+        <mat-icon>album</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/albums']">Search Album</button>
+      
+      <button mat-icon-button matTooltip="View my favorites" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/favorite']">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/favorite']">Favorite</button>
+      
+      <button mat-icon-button matTooltip="View gallery" class="example-icon" aria-label="Example icon-button with menu icon" [routerLink]="['/gallery']">
+        <mat-icon>collections</mat-icon>
+      </button>
+      <button mat-button [routerLink]="['/gallery']">Gallery</button>
+      
+      <button class="logout-btn" mat-flat-button color="primary" [routerLink]="['/logout']">Logout</button>
+  
+  
+    </mat-toolbar>
+  </div>
+  
+<!-- My navbar -->
+
+
+  <form [formGroup]="artistsForm" (ngSubmit)="searchArtist()" class="example-form">
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Artist</mat-label>
+      <input type="text" matInput formControlName="q" placeholder="Eg. black pink">
+      <mat-error *ngIf="artistsForm?.get('q')?.touched && artistsForm?.get('q')?.hasError('required')">
+        Please enter an <strong>artist name</strong>
+      </mat-error>
+    </mat-form-field>
+    <input type="hidden" value="artist" formControlName="type">
+    <mat-form-field class="example-full-width">
+  
+    <mat-label>Limit</mat-label>
+      <input type="number" min="1" max="15" matInput formControlName="limit" placeholder="Eg.1 - 15">
+      <mat-error *ngIf="artistsForm?.get('limit')?.touched && artistsForm?.get('limit')?.hasError('min') || artistsForm?.get('limit')?.touched && artistsForm?.get('limit')?.hasError('max')">
+        Please enter between <strong>1 - 15</strong>
+      </mat-error>
+      <mat-error *ngIf="artistsForm?.get('limit')?.touched && artistsForm?.get('limit')?.hasError('required')">
+        Please enter <strong>number</strong>
+      </mat-error>
+    </mat-form-field>
+  <button class="btn" type="submit" [disabled]="artistsForm.get('q')?.invalid || artistsForm.get('limit')?.invalid" mat-raised-button color="primary">Search</button>
+  
+  
+  <div *ngFor="let art of artist">
+    <mat-card class="example-card">
+      <mat-card-header>
+          <mat-card-title>
+            <h1>{{art.name}}</h1>  
+          </mat-card-title>
+          <mat-card-subtitle><strong> id:{{art.id}}</strong></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{art.images[0].url}}" >
+      <mat-card-content>
+        <h3>Genre: {{art.genres}}</h3>
+        <h3>Followers: {{art.followers.total}}</h3>
+        <h3>Popularity: {{art.popularity}}</h3>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="button" mat-raised-button color="primary" (click)="saveArtist(art); popup = true">SAVE</button>
+        
+        <div class="overlay" *ngIf="popup && selectArtist === art">
+          <div class="popup">
+            <h1>{{art.name}}</h1>
+            <h2>Saved Successfully</h2>
+            <img src="{{art.images[0].url}}" alt="" width="200">
+            <a class="close" (click)="popup = false">&times;</a>
+            <div class="content">
+            <a href="https://open.spotify.com/artist/{{art.id}}" target="_blank">View artist on Spotify </a>
+            <br>
+            <button mat-icon-button matTooltip="View my favorites" color="warn" [routerLink]="['/favorite']">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            </div>
+          </div>
+        </div>
+  
+        &nbsp;
+        <button mat-raised-button color="accent" (click)="goSpotify(art.id)">Go to Spotify</button>
+      </mat-card-actions>
+    </mat-card>   
+      </div>  
+  </form>
+
+
+<!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+<!-- <form [formGroup]="artistsForm" (ngSubmit)="searchArtist()">
+
+    <table>
+        <tr>
+          <td>Artist:</td>
+          <td>
+            <input type="text" placeholder="Search by artist" size="30"  formControlName="q">
+
+            <div *ngIf="artistsForm?.get('q')?.invalid && artistsForm.get('q')?.touched">
+              <div *ngIf="artistsForm?.get('q')?.touched && artistsForm?.get('q')?.hasError('required')" >Cannot be empty</div>
+            </div>
+
+          </td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td>
+              <input type="hidden" value="artist" formControlName="type">
+            </td>
+          </tr>
+        <tr>
+          <td>Limit:</td>
+          <td>
+            <input type="number" value="5" min="1" max="15" step="5" size="30" formControlName="limit">
+          
+            <div *ngIf="artistsForm?.get('limit')?.invalid && artistsForm.get('limit')?.touched">
+              <div *ngIf="artistsForm?.get('limit')?.touched && artistsForm?.get('limit')?.hasError('required')">Please Enter Limit.</div>
+              <div *ngIf="artistsForm?.get('limit')?.touched && artistsForm?.get('limit')?.hasError('min')">Minimum must be 1.</div>
+              <div *ngIf="artistsForm?.get('limit')?.touched && artistsForm?.get('limit')?.hasError('max')">Maximum must be 15.</div>
+            </div>
+
+          </td>
+        </tr>
+        
+        <button type="submit" [disabled]="artistsForm.get('q')?.invalid">Search!</button>
+    </table>
+    
+    <div *ngFor="let art of artist">
+      <img src="{{art.images[0].url}}" alt="">
+      <h3>ID: {{art.id}}</h3>
+      <h3>NAME: {{art.name}}</h3>
+      <h3>URI: {{art.uri}}</h3>
+      <h3>TYPE: {{art.type}}</h3>
+      <h3>POPULARITY: {{art.popularity}}</h3>
+      <h3>HREF: {{art.href}}</h3>
+      <h3>ExternalURL: https://open.spotify.com/artist/{{art.id}}</h3>
+      <h3>FOLLOWERS: {{art.followers.total}}</h3>
+      <h3>IMAGE: {{art.images[0].url}}</h3>
+      <h3>GENRE: {{art.genres}}</h3>
+      <button type="button" (click)="saveArtist(art); popup = true">Save this Artist</button>
+      
+        <div class="overlay" *ngIf="popup && selectArtist === art">
+            <div class="popup">
+              <h1>{{art.name}}</h1>
+              <h2>Saved Successfully</h2>
+              <img src="{{art.images[0].url}}" alt="" width="200">
+              <a class="close" (click)="popup = false">&times;</a>
+              <div class="content">
+              <a href="https://open.spotify.com/artist/{{art.id}}" target="_blank"> Click to go to Spotify to see this Artist </a>
+            </div>
+        </div>
+        
+      </div>
+    </div>  
+    
+
+</form> -->
+</body>
+</html>  
+  
+  
+ 
+ 
+ 

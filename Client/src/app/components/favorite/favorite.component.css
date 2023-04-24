@@ -1,0 +1,27 @@
+
+  .logout-btn{
+    position: absolute;
+    right: 0;
+  }
+
+ 
+
+  .chips {
+    position: fixed;
+
+  }
+
+  .example-card {
+    display: flex;
+    /* display: block; */
+    /* justify-content: center; */
+    width: 50vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(159, 170, 170);
+    padding-bottom: 50px;
+    padding-top: 50px;
+    margin-left: 30%;
+    /* padding-left: 500px; */
+  }
+  

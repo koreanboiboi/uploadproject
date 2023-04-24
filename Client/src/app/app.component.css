@@ -1,0 +1,91 @@
+.tool-bar{
+    position: relative;
+    width: 100%;
+}
+
+
+.menu-icon{
+    width: auto;  
+    background-color: rgb(247, 255, 102);
+}
+
+.money-icon{
+    padding: 0 14px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-icon {
+    padding: 0 14px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+
+  *{
+    margin:0;
+    padding: 0;
+  }
+
+  .animate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #263238;
+  }
+  .content{
+    font-size: 50px;
+    line-height:1;
+    text-align: center;
+    font-family: bebas neue;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg, aqua,blue,magenta,red,orange,yellow,green,cyan,blue,violet,cyan,skyblue);
+    background-size: 400% 400%;
+    animation: animate 13s ease infinite;
+  }
+
+  .content span{
+    font-size: 50px;
+  }
+  @keyframes animate{
+    0%{
+        background-position: 0 0;
+    }
+    25%{
+        background-position: 100% 0;
+    }
+    50%{
+        background-position: 100% 100%;
+    }
+    75%{
+        background-position: 0 100%;
+    }
+    100%{
+        background-position: 0 0;
+    }
+  }
+
+.spacer{
+    margin-top: 64px;
+}
+
+  .btm-toolbar{
+    position: fixed;
+    bottom: 0;
+  }
+
+  /* body {
+    display: grid;
+    place-items: center;
+  } */
+
+  
+  /* body {
+    background-image: url('\src\assets\images\background-image.jpg');
+    background-repeat: repeat;
+    height: 100%;
+  } */
